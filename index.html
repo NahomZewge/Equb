@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  </head>
+  <body background="money.jpg" style="background-repeat: no-repeat;background-size: 100%;" style="width: 100%;height: 100vh;background-size: cover;background-position: center;display: flex; align-items: center; justify-content: center;">
+    <div class="heading"><h1>EQUB</h1></div>
+    <div class="title mx-4"><h3>Welcome To Equb Traditional Money Saving Technic</h3></div>
+    <div class="title mx-4"><h5>Only In Ethiopia.</h5></div>
+    <div class="container  "style="width: 3000px; display: flex;  box-shadow: 20px 20px 50px; border-radius: 15px; background: rgba(41, 88, 85, 0.397); backdrop-filter: blur(10px); flex-wrap: wrap;height: 500px;padding: 100px;">
+    <form style="width: 700px;">
+      <div class="row justify-content-around">
+            <div class="col-4 ">
+        <div class="mb-3 ">
+          <label for="exampleInputEmail1" class="form-label">User Name</label>
+          <input type="text" class="form-control" id="username">
+        </div>
+    
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Enter Money</label>
+          <input type="number" class="form-control" id="Money">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Phone number</label>
+          <input type="number" class="form-control" id="Phone">
+        </div>
+       
+        <button type="button" id="btn" class="btn btn-primary">Submit</button>
+        
+    </div>
+        <div class="appendClass col-8 "style="padding: 0px 0px 0px 100px;">
+         <table class="table ">
+          <thead>
+          <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">Money</th>
+            <th scope="col">Phone Number</th>
+            
+          </tr></thead></table> 
+          <table class="table" id="table">
+           
+           
+          </table>
+         <center> <button type="button" id="btn1" class="btn btn-primary">Edit</button>
+          <button type="button" id="btn2" class="btn btn-primary">Remove</button>
+          <button type="button" id="btn3" class="btn btn-primary">Who is the winner!!</button></center>
+        </div>
+       
+        </div>
+    
+    </div>
+    <center><div class="clearfix mt-3" style="text-decoration: white; background-color: rgb(39, 100, 100);">
+      <h1>Discription</h1>
+      <p> Equb is traditional money saving in ethiopia if the first  winner win the money they will be in saving program <br>until the last person win so it is not like lottery!</br>
+    </p>
+   
+    <a class="read more text-light" href="#">Read more</a>
+    <br>
+  </br>
+  <br>
+  </br>
+    </div></center>
+    <div class="clearfix mt-3" style="text-decoration: white; background-color: rgb(22, 26, 26);">
+      <p>
+      
+    </p>
+    <center>
+    <a class="read more text-light" href="#">@All copy right resive 2023</a>
+  </center>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    let rIndex,table = document.getElementById('table')
+   let btn1 = document.getElementById('btn')
+   btn1.addEventListener('click',getElement)
+
+   let btn2 = document.getElementById('btn1')
+   btn2.addEventListener('click',editinput)
+
+let btn3 = document.getElementById('btn2')
+   btn3.addEventListener('click',removerow)
+
+   let btn4 = document.getElementById('btn3')
+   btn4.addEventListener('click',winner)
+   
+  
+   
+    function getElement()
+    {
+      let newRow = table.insertRow(table.length)
+    cell1 =newRow.insertCell(0)
+    cell2 =newRow.insertCell(1)
+    cell3 =newRow.insertCell(2)
+ 
+               let username = document.getElementById('username').value
+               let Money = document.getElementById('Money').value
+               let Phone = document.getElementById('Phone').value
+            
+   cell1.innerHTML=username
+   cell2.innerHTML=Money
+   cell3.innerHTML=Phone
+   selectedRowtoinput()
+        
+    }
+    function selectedRowtoinput()
+    {
+      for (var i = 0 ; i < table.rows.length; i++)
+      {
+        table.rows[i].onclick = function()
+        {
+          rIndex = this.rowIndex
+          document.getElementById('username').value= this.cells[0].innerHTML
+          document.getElementById('Money').value= this.cells[1].innerHTML
+          document.getElementById('Phone').value= this.cells[2].innerHTML
+        };
+      }
+    }
+    selectedRowtoinput()
+    function editinput()
+    {
+      let username = document.getElementById('username').value
+         Money = document.getElementById('Money').value
+          Phone = document.getElementById('Phone').value;
+      table.rows[rIndex].cells[0].innerHTML= username;
+      table.rows[rIndex].cells[1].innerHTML= Money;
+      table.rows[rIndex].cells[2].innerHTML= Phone;
+    }
+    function removerow()
+    {
+      table.deleteRow(rIndex)
+        document.getElementById('username').value=''
+        document.getElementById('Money').value=''
+        document.getElementById('Phone').value=''
+    }
+function winner()
+{
+  const table = document.getElementById('table');
+const trElements = table.querySelectorAll('tr');
+trElements.forEach((tr) => {
+  tr.style.display = 'none';
+});
+
+const numberOfTrElements = trElements.length;
+
+const randomTrElements = [];
+for (let i = 0; i < 1; i++) {
+  const randomIndex = Math.floor(Math.random() * numberOfTrElements);
+  randomTrElements.push(trElements[randomIndex]);
+}
+randomTrElements.forEach((tr) => {
+  tr.style.display = 'block';
+});
+  var sum = 0;
+  for (var i = 0; i < 1; i++) {
+  
+  var value = table.rows[i].cells[randomColumn].innerHTML;
+
+  sum += parseFloat(value);
+}
+cell3.innerHTML=sum
+document.getElementById("table").cells[3].innerHTML = sum;
+
+}
+
+  </script>
+</body>
+</html>
